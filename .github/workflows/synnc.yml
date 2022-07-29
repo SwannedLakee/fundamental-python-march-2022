@@ -1,18 +1,17 @@
-name: Sync Fork
-
+name: Fork News (this is the one that actually works)
 on:
   schedule:
-    - cron: '20 14 * * *'
+    - cron: '00 00 * * *' # sync the repo everyday at 00:00 UTC!
   workflow_dispatch: # on button click
 
 jobs:
-  sync:
-
+  fork-news:
     runs-on: ubuntu-latest
-
+    name: Sync with parent repository
     steps:
-      - uses: tgymnich/fork-sync@v1.4
+      - id: fork-news-sync
+        uses: vitornovictor/fork-news@v1.0.0
         with:
-          owner: SwannedLakee
-          base: master # this should match  actual name of the branch (check it with the original repo)
-          head: master # this should match  actual name of the branch (check it with the original repo)
+          from-branch: main
+          to-branch: main
+          access-token: ${{ secrets.token }}
