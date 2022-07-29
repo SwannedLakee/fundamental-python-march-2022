@@ -14,4 +14,4 @@ jobs:
         with:
           from-branch: main
           to-branch: main
-          access-token: ${{ secrets.token }}
+          access-token: ${{ secrets.TOKEN }}
